@@ -12,7 +12,7 @@ repository and should be run from the repository root, in the order below.
 No monitoring data are redistributed here; see "Data access" for how to obtain
 the inputs.
 
-## Demo (no data agreement required)
+## Demo (no download required)
 
 A fully synthetic demonstration reproduces the paper's mechanism end-to-end,
 offline, in seconds, with base R only:
@@ -72,15 +72,37 @@ environment variable.
 
 ## Data access
 
-- **Aclima/EDF mobile monitoring data** (Google Street View--Aclima campaigns,
-  Oakland 2015--2016 and California/San Francisco 2016--2017): available through
-  the Environmental Defense Fund air-quality data portal; registration is
-  required. No monitoring data are redistributed in this repository.
+- **Google/Aclima Project Air View California data** (Google Street View--Aclima
+  campaigns; the Oakland 2015--2016 and California/San Francisco 2016--2017
+  deployments used in the paper are subsets): publicly available as a Google
+  Earth Engine FeatureCollection. No registration or data agreement is
+  required.
+
+  - Asset: `GOOGLE/AirView/California_Unified_2015_2019`
+  - Catalog page: <https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_AirView_California_Unified_2015_2019>
+  - License: CC-BY-NC-4.0
+  - Required attribution: "Air Quality Data from Google and Aclima"
+  - Cite as: Google and Aclima, 2019: Project Air View California 2015--2019
+
+  Reference export snippet:
+
+  ```javascript
+  var fc = ee.FeatureCollection('GOOGLE/AirView/California_Unified_2015_2019');
+  // Filter to region of interest, then export with Car_Identifier and Car_Speed retained.
+  ```
+
+  Export the region and period of interest to the paths under "Expected
+  directory layout". No monitoring data are redistributed in this repository.
+  The synthetic demo above remains useful for offline execution without any
+  Earth Engine export.
 - **OpenStreetMap road networks**: retrieved via the Overpass API
   (`44_sf_osm.R` performs the San Francisco download; the Oakland network JSON
   is cached the same way). OSM data are (c) OpenStreetMap contributors, ODbL.
 
 ## License
 
-MIT; see `LICENSE`. Please cite the paper (see `CITATION.cff`) if you use this
-code.
+MIT; see `LICENSE`. The MIT license covers the code only. Any extracts or
+derived datasets built from the Earth Engine asset inherit the CC-BY-NC-4.0
+license of the source data, including its non-commercial term; carry the
+attribution "Air Quality Data from Google and Aclima" with any redistributed
+derivative. Please cite the paper (see `CITATION.cff`) if you use this code.
