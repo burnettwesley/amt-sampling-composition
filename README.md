@@ -12,6 +12,33 @@ repository and should be run from the repository root, in the order below.
 No monitoring data are redistributed here; see "Data access" for how to obtain
 the inputs.
 
+## Demo (no data agreement required)
+
+A fully synthetic demonstration reproduces the paper's mechanism end-to-end,
+offline, in seconds, with base R only:
+
+```
+Rscript scripts/00_generate_demo_data.R   # build synthetic network + ~200k readings
+Rscript scripts/99_demo_run.R             # diagnostics + join experiment + bootstrap
+```
+
+The first script builds a stylized 30x30 street grid with a freeway spine and
+simulates 120 collection days of two-car routes calibrated to the paper's
+published revisit-day medians (65/33/26/16) and class-level concentration
+means, writing `demo_data/demo_readings.csv.gz` (~7 MB). The second classifies
+every reading by road class, runs the pre-join diagnostics, matches 500
+synthetic non-freeway sites blind versus class-constrained under the paper's
+join metric (2 km, +/-72 h), and bootstraps the gaps (B = 199). The artifact
+reproduces qualitatively: blind joins inflate log(NOx) at non-freeway sites,
+understate the titrated pollutant O3 (negative gap), and carry a small
+positive particle-number gap tracking that pollutant's shallow gradient.
+
+**Disclaimer (loud, on purpose): the demo data are SYNTHETIC. They contain no
+Aclima records and were generated exclusively from summary statistics
+published in the manuscript; the generator reads no Aclima file. Structural
+properties only — not for scientific inference.** See `demo_data/README.md`
+for the parameterization and compliance basis.
+
 ## Script run order and outputs
 
 | Order | Script                            | What it does and produces |
