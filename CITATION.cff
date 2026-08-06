@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Code for: Sampling-composition bias in urban mobile air-quality monitoring"
+type: software
+authors:
+  - family-names: Burnett
+    given-names: J. Wesley
+    affiliation: "Economic Research Service, U.S. Department of Agriculture"
+  - family-names: Sheldon
+    given-names: Tamara L.
+    affiliation: "Department of Economics, University of South Carolina"
+year: 2026
+license: MIT
+preferred-citation:
+  type: article
+  title: "Sampling-composition bias in urban mobile air-quality monitoring: diagnostics and a road-class-aware correction for proximity joins to located outcomes"
+  authors:
+    - family-names: Burnett
+      given-names: J. Wesley
+      affiliation: "Economic Research Service, U.S. Department of Agriculture"
+    - family-names: Sheldon
+      given-names: Tamara L.
+      affiliation: "Department of Economics, University of South Carolina"
+  year: 2026
+  journal: "Atmospheric Measurement Techniques (in preparation)"
